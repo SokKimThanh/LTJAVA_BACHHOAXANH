@@ -1,0 +1,17 @@
+- name: Simple Issue Labeler
+  # You may pin to the exact commit or the version.
+  # uses: andymckay/labeler@e6c4322d0397f3240f0e7e30a33b5c5df2d39e90
+  uses: andymckay/labeler@1.0.4
+  with:
+    # The GitHub token
+    repo-token: # optional, default is ${{ github.token }}
+    # Labels to add to an issue, seperated by commas.
+    add-labels: # optional
+    # Labels to be removed from an issue, seperated by commas.
+    remove-labels: # optional
+    # True/False value to indicate if no labels should be added or removed if there is an assignee to the issue.
+    ignore-if-assigned: # optional
+    # True/False value to indicate if no labels should be added or removed if the issue already has labels.
+    ignore-if-labeled: # optional
+    # An issue number or PR number or project card number. Optional, if not specified, will use the one available in github event `github.event.pull_request` or `github.event.issue`
+    issue-number: # optional
