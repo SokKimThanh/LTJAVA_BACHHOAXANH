@@ -31,6 +31,9 @@ public class frmAdminSanPham extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         divInfo = new javax.swing.JPanel();
         divInput = new javax.swing.JPanel();
+        divLoaiSanPham = new javax.swing.JPanel();
+        lblLoaiSanPham = new javax.swing.JLabel();
+        cboLoaiSanPham = new javax.swing.JComboBox<>();
         divTenSP = new javax.swing.JPanel();
         lblTenSP = new javax.swing.JLabel();
         inputTenSP = new javax.swing.JTextField();
@@ -54,6 +57,9 @@ public class frmAdminSanPham extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(500, 173));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.PAGE_AXIS));
 
+        divTitle.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        divTitle.setFocusable(false);
+
         lblTitle.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblTitle.setLabelFor(this);
         lblTitle.setText("Danh mục sản phẩm");
@@ -62,11 +68,26 @@ public class frmAdminSanPham extends javax.swing.JFrame {
         divTitle.add(lblTitle);
 
         getContentPane().add(divTitle);
+        divTitle.getAccessibleContext().setAccessibleName("");
+        divTitle.getAccessibleContext().setAccessibleDescription("");
 
         divInfo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         divInfo.setLayout(new javax.swing.BoxLayout(divInfo, javax.swing.BoxLayout.PAGE_AXIS));
 
-        divInput.setLayout(new java.awt.GridLayout(2, 0, 8, 8));
+        divInput.setLayout(new java.awt.GridLayout(3, 0, 8, 8));
+
+        divLoaiSanPham.setLayout(new java.awt.GridLayout(1, 0, 8, 8));
+
+        lblLoaiSanPham.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblLoaiSanPham.setText("Loại sản phẩm");
+        lblLoaiSanPham.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        lblLoaiSanPham.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        divLoaiSanPham.add(lblLoaiSanPham);
+
+        cboLoaiSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trứng sữa", "Đường", "Rau củ quả" }));
+        divLoaiSanPham.add(cboLoaiSanPham);
+
+        divInput.add(divLoaiSanPham);
 
         divTenSP.setLayout(new java.awt.GridLayout(1, 0, 8, 8));
 
@@ -108,6 +129,8 @@ public class frmAdminSanPham extends javax.swing.JFrame {
 
         divButton.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
+        btnThem.setBackground(new java.awt.Color(34, 167, 242));
+        btnThem.setForeground(java.awt.Color.white);
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,11 +277,13 @@ public class frmAdminSanPham extends javax.swing.JFrame {
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JComboBox<String> cboLoaiSanPham;
     private javax.swing.JCheckBox ckbSearch1;
     private javax.swing.JPanel divButton;
     private javax.swing.JPanel divGiaTien;
     private javax.swing.JPanel divInfo;
     private javax.swing.JPanel divInput;
+    private javax.swing.JPanel divLoaiSanPham;
     private javax.swing.JPanel divSearch;
     private javax.swing.JPanel divTable;
     private javax.swing.JPanel divTenSP;
@@ -267,6 +292,7 @@ public class frmAdminSanPham extends javax.swing.JFrame {
     private javax.swing.JTextField inputSearch1;
     private javax.swing.JTextField inputTenSP;
     private javax.swing.JLabel lblGiaTien;
+    private javax.swing.JLabel lblLoaiSanPham;
     private javax.swing.JLabel lblTenSP;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel panelSearch;
