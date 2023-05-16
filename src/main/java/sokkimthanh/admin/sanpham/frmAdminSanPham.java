@@ -192,9 +192,17 @@ public class frmAdminSanPham extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "#", "Tên sản phẩm", "Loại sản phẩm", "Giá tiền"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         scrollSanPham.setViewportView(tblSanPham);
 
         divTable.add(scrollSanPham);
