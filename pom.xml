@@ -11,14 +11,7 @@
             <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
             <url>file:${project.basedir}/lib</url>
         </repository>
-    </repositories>
-    <dependencies>
-        <dependency>
-            <groupId>unknown.binary</groupId>
-            <artifactId>AbsoluteLayout</artifactId>
-            <version>SNAPSHOT</version>
-        </dependency>
-    </dependencies>
+    </repositories> 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>19</maven.compiler.source>
@@ -26,4 +19,13 @@
         <exec.mainClass>sokkimthanh.menuchitietsanpham.MenuChiTietSanPham</exec.mainClass>
     </properties>
     <name>BachHoaXanh</name>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.23</version>
+        </dependency>
+    </dependencies>
 </project>

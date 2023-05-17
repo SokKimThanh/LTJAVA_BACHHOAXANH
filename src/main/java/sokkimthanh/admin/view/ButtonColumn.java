@@ -1,4 +1,4 @@
-package sokkimthanh.admin.sanpham;
+package sokkimthanh.admin.view;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

@@ -3,7 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sokkimthanh.admin.sanpham;
+package sokkimthanh.admin.view;
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import sokkimthanh.admin.example.SinhVien;
+import sokkimthanh.admin.model.DSSanPham;
+import sokkimthanh.admin.model.SanPham;
 
 /**
  *
@@ -11,11 +17,29 @@ package sokkimthanh.admin.sanpham;
  */
 public class frmAdminSanPham extends javax.swing.JFrame {
 
+    //connect danhSachSP
+    DSSanPham danhSachSP = new DSSanPham();
+    int maSP = 0;
+    String tenSP = "";
+    int loaiSP = 0;
+    double giaSP = .0;
+
+    private void hienThi() {
+        danhSachSP.DocDL();
+        for (SanPham value : danhSachSP.getData()) {
+            DefaultTableModel detbl = (DefaultTableModel) tblHienThi.getModel();
+            Object[] data = new Object[]{value.getMaSP(), value.getTenSP(), value.getLoaiSP(), value.getGiaSP()};
+//            detbl = (DefaultTableModel) tblHienThi.getModel();
+            detbl.addRow(data);
+        }
+    }
+
     /**
      * Creates new form NewJFrame
      */
     public frmAdminSanPham() {
         initComponents();
+        hienThi();
     }
 
     /**
@@ -36,10 +60,10 @@ public class frmAdminSanPham extends javax.swing.JFrame {
         cboLoaiSanPham = new javax.swing.JComboBox<>();
         divTenSP = new javax.swing.JPanel();
         lblTenSP = new javax.swing.JLabel();
-        inputTenSP = new javax.swing.JTextField();
+        txtTenSanPham = new javax.swing.JTextField();
         divGiaTien = new javax.swing.JPanel();
         lblGiaTien = new javax.swing.JLabel();
-        inputGiaTien = new javax.swing.JTextField();
+        txtGiaSanPham = new javax.swing.JTextField();
         divButton = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -51,7 +75,7 @@ public class frmAdminSanPham extends javax.swing.JFrame {
         btnSearch1 = new javax.swing.JButton();
         divTable = new javax.swing.JPanel();
         scrollSanPham = new javax.swing.JScrollPane();
-        tblSanPham = new javax.swing.JTable();
+        tblHienThi = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 173));
@@ -97,31 +121,31 @@ public class frmAdminSanPham extends javax.swing.JFrame {
         lblTenSP.setMaximumSize(new java.awt.Dimension(20, 18));
         divTenSP.add(lblTenSP);
 
-        inputTenSP.setColumns(1);
-        inputTenSP.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        inputTenSP.addActionListener(new java.awt.event.ActionListener() {
+        txtTenSanPham.setColumns(1);
+        txtTenSanPham.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtTenSanPham.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputTenSPActionPerformed(evt);
+                txtTenSanPhamActionPerformed(evt);
             }
         });
-        divTenSP.add(inputTenSP);
+        divTenSP.add(txtTenSanPham);
 
         divInput.add(divTenSP);
 
         divGiaTien.setLayout(new java.awt.GridLayout(1, 0, 8, 8));
 
         lblGiaTien.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblGiaTien.setText("Giá tiền");
+        lblGiaTien.setText("Giá sản phẩm");
         lblGiaTien.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         lblGiaTien.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         divGiaTien.add(lblGiaTien);
 
-        inputGiaTien.addActionListener(new java.awt.event.ActionListener() {
+        txtGiaSanPham.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputGiaTienActionPerformed(evt);
+                txtGiaSanPhamActionPerformed(evt);
             }
         });
-        divGiaTien.add(inputGiaTien);
+        divGiaTien.add(txtGiaSanPham);
 
         divInput.add(divGiaTien);
 
@@ -184,18 +208,27 @@ public class frmAdminSanPham extends javax.swing.JFrame {
 
         divTable.setLayout(new javax.swing.BoxLayout(divTable, javax.swing.BoxLayout.LINE_AXIS));
 
-        tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
+        tblHienThi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "#", "Tên sản phẩm", "Loại sản phẩm", "Giá sản phẩm"
             }
-        ));
-        scrollSanPham.setViewportView(tblSanPham);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tblHienThi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblHienThiMouseClicked(evt);
+            }
+        });
+        scrollSanPham.setViewportView(tblHienThi);
 
         divTable.add(scrollSanPham);
 
@@ -208,6 +241,7 @@ public class frmAdminSanPham extends javax.swing.JFrame {
 
     private void btnSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch1ActionPerformed
         // TODO add your handling code here:
+        danhSachSP.DocDL();
     }//GEN-LAST:event_btnSearch1ActionPerformed
 
     private void ckbSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbSearch1ActionPerformed
@@ -215,24 +249,94 @@ public class frmAdminSanPham extends javax.swing.JFrame {
     }//GEN-LAST:event_ckbSearch1ActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        // TODO add your handling code here:
+        // khai bao
+        int loaiSP = cboLoaiSanPham.getSelectedIndex();
+        String tenSP = txtTenSanPham.getText();
+        double giaSP = Double.parseDouble(txtGiaSanPham.getText());
+
+        // sua san pham
+        int status = danhSachSP.SuaDL(new SanPham(maSP, tenSP, loaiSP, giaSP));
+        if (status > 0) {
+            JOptionPane.showMessageDialog(rootPane, "Sửa thông tin thành công", "Fixing", 3);
+            DefaultTableModel detbl = (DefaultTableModel) tblHienThi.getModel();
+            detbl.setValueAt(maSP, tblHienThi.getSelectedRow(), 0);
+            detbl.setValueAt(tenSP, tblHienThi.getSelectedRow(), 1);
+            detbl.setValueAt(loaiSP, tblHienThi.getSelectedRow(), 2);
+            detbl.setValueAt(giaSP, tblHienThi.getSelectedRow(), 3);
+        }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        // TODO add your handling code here:
+
+        int result = JOptionPane.showConfirmDialog(rootPane, "Đồng ý xóa Sản phẩm " + tenSP);
+        if (result == 0) {
+            int status = danhSachSP.XoaDL(new SanPham(maSP));
+            if (status > 0) {
+                JOptionPane.showMessageDialog(rootPane, "Xóa thông tin thành công", "Remove", 1);
+                DefaultTableModel detbl = (DefaultTableModel) tblHienThi.getModel();
+                detbl.removeRow(tblHienThi.getSelectedRow());
+            }
+        }
+        // reset form
+        cboLoaiSanPham.setSelectedIndex(0);
+        txtTenSanPham.setText("");
+        txtGiaSanPham.setText("");
+
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        int loaiSP = cboLoaiSanPham.getSelectedIndex();
+        String tenSP = txtTenSanPham.getText();
+        double giaSP = Double.parseDouble(txtGiaSanPham.getText());
 
+        SanPham sp = new SanPham(tenSP, loaiSP, giaSP);
+        int status = danhSachSP.ThemDL(sp);
+        txtTenSanPham.setText("");
+        txtGiaSanPham.setText("");
+        cboLoaiSanPham.setSelectedIndex(0);
+
+        if (status > 0) {
+            JOptionPane.showMessageDialog(rootPane, "Thêm thông tin thành công", "Adding", 2);
+            danhSachSP.DocDL();
+            SanPham sss = (SanPham) danhSachSP.getData().toArray()[danhSachSP.getData().toArray().length - 1];
+
+            DefaultTableModel detbl = (DefaultTableModel) tblHienThi.getModel();
+            Object[] data = new Object[]{sss.getMaSP(), sss.getTenSP(), sss.getLoaiSP(), sss.getGiaSP()};
+            detbl = (DefaultTableModel) tblHienThi.getModel();
+            detbl.addRow(data);
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
-    private void inputGiaTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputGiaTienActionPerformed
+    private void txtGiaSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGiaSanPhamActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputGiaTienActionPerformed
+    }//GEN-LAST:event_txtGiaSanPhamActionPerformed
 
-    private void inputTenSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTenSPActionPerformed
+    private void txtTenSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenSanPhamActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputTenSPActionPerformed
+    }//GEN-LAST:event_txtTenSanPhamActionPerformed
+
+    private void tblHienThiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHienThiMouseClicked
+        DefaultTableModel tableModel = (DefaultTableModel) tblHienThi.getModel();
+
+        int colMaSP = 0;// column mã sản phẩm
+        int colTenSP = 1;// column tên sản phẩm        
+        int colLoaiSP = 2;// column loai sản phẩm
+        int colGiaSP = 3;// column giá sản phẩm
+
+        // chọn row trên table
+        int row = tblHienThi.getSelectedRow();
+
+        // lấy giá trị từng cột
+        maSP = Integer.parseInt(tableModel.getValueAt(row, colMaSP).toString());
+        tenSP = tableModel.getValueAt(row, colTenSP).toString();
+        loaiSP = Integer.parseInt(tableModel.getValueAt(row, colLoaiSP).toString());
+        giaSP = Double.parseDouble(tableModel.getValueAt(row, colGiaSP).toString());
+
+        // chọn xong nhập thông tin trên form
+        cboLoaiSanPham.setSelectedIndex(loaiSP);
+        txtTenSanPham.setText(tenSP);
+        txtGiaSanPham.setText(giaSP + "");
+    }//GEN-LAST:event_tblHienThiMouseClicked
 
     /**
      * @param args the command line arguments
@@ -288,15 +392,15 @@ public class frmAdminSanPham extends javax.swing.JFrame {
     private javax.swing.JPanel divTable;
     private javax.swing.JPanel divTenSP;
     private javax.swing.JPanel divTitle;
-    private javax.swing.JTextField inputGiaTien;
     private javax.swing.JTextField inputSearch1;
-    private javax.swing.JTextField inputTenSP;
     private javax.swing.JLabel lblGiaTien;
     private javax.swing.JLabel lblLoaiSanPham;
     private javax.swing.JLabel lblTenSP;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel panelSearch;
     private javax.swing.JScrollPane scrollSanPham;
-    private javax.swing.JTable tblSanPham;
+    private javax.swing.JTable tblHienThi;
+    private javax.swing.JTextField txtGiaSanPham;
+    private javax.swing.JTextField txtTenSanPham;
     // End of variables declaration//GEN-END:variables
 }
