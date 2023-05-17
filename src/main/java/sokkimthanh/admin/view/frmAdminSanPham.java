@@ -212,7 +212,11 @@ public class frmAdminSanPham extends javax.swing.JFrame {
             new Object [][] {
             },
             new String [] {
+<<<<<<< HEAD:src/main/java/sokkimthanh/admin/view/frmAdminSanPham.java
                 "#", "Tên sản phẩm", "Loại sản phẩm", "Giá sản phẩm"
+=======
+                "#", "Tên sản phẩm", "Loại sản phẩm", "Giá tiền"
+>>>>>>> develop:src/main/java/sokkimthanh/admin/sanpham/frmAdminSanPham.java
             }
         ) {
             Class[] types = new Class [] {
@@ -223,12 +227,16 @@ public class frmAdminSanPham extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+<<<<<<< HEAD:src/main/java/sokkimthanh/admin/view/frmAdminSanPham.java
         tblHienThi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblHienThiMouseClicked(evt);
             }
         });
         scrollSanPham.setViewportView(tblHienThi);
+=======
+        scrollSanPham.setViewportView(tblSanPham);
+>>>>>>> develop:src/main/java/sokkimthanh/admin/sanpham/frmAdminSanPham.java
 
         divTable.add(scrollSanPham);
 
