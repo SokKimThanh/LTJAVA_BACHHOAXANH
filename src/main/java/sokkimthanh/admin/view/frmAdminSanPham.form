@@ -139,7 +139,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="inputTenSP">
+                <Component class="javax.swing.JTextField" name="txtTenSanPham">
                   <Properties>
                     <Property name="columns" type="int" value="1"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -147,7 +147,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputTenSPActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTenSanPhamActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -164,7 +164,7 @@
                 <Component class="javax.swing.JLabel" name="lblGiaTien">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="4"/>
-                    <Property name="text" type="java.lang.String" value="Gi&#xe1; ti&#x1ec1;n"/>
+                    <Property name="text" type="java.lang.String" value="Gi&#xe1; s&#x1ea3;n ph&#x1ea9;m"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                         <EtchetBorder bevelType="0"/>
@@ -173,9 +173,9 @@
                     <Property name="horizontalTextPosition" type="int" value="10"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="inputGiaTien">
+                <Component class="javax.swing.JTextField" name="txtGiaSanPham">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputGiaTienActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtGiaSanPhamActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -267,8 +267,39 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tblSanPham">
+                <Component class="javax.swing.JTable" name="tblHienThi">
                   <Properties>
+<<<<<<< HEAD:src/main/java/sokkimthanh/admin/view/frmAdminSanPham.form
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;             },&#xa;    new String [] {&#xa;        &quot;#&quot;, &quot;T&#xea;n s&#x1ea3;n ph&#x1ea9;m&quot;, &quot;Lo&#x1ea1;i s&#x1ea3;n ph&#x1ea9;m&quot;, &quot;Gi&#xe1; s&#x1ea3;n ph&#x1ea9;m&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;}" type="code"/>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+=======
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="4">
                         <Column editable="true" title="#" type="java.lang.Integer"/>
@@ -276,8 +307,12 @@
                         <Column editable="true" title="Lo&#x1ea1;i s&#x1ea3;n ph&#x1ea9;m" type="java.lang.Integer"/>
                         <Column editable="true" title="Gi&#xe1; ti&#x1ec1;n" type="java.lang.Double"/>
                       </Table>
+>>>>>>> develop:src/main/java/sokkimthanh/admin/sanpham/frmAdminSanPham.form
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblHienThiMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

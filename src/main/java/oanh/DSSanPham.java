@@ -8,9 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author oanh
- * 14/5/2023
- * Cai Dat Lop DSSanPham
+ * @author oanh 14/5/2023 Cai Dat Lop DSSanPham
  */
 public class DSSanPham {
 
@@ -53,8 +51,8 @@ public class DSSanPham {
 
     public int edit(SanPham item, String tieuChi) {
         switch (tieuChi) {
-            case "tenSP" -> {
-                for (SanPham o2:data){
+            case "tenSP": {
+                for (SanPham o2 : data) {
                     if (o2.getMaSP().compareTo(item.getMaSP()) == 0) {
                         o2.setTenSP(item.getTenSP());
                         return 1;
@@ -62,8 +60,8 @@ public class DSSanPham {
                     break;
                 }
             }
-            case "giaSP" -> {
-                for (SanPham o2:data){
+            case "giaSP": {
+                for (SanPham o2 : data) {
                     if (o2.getMaSP().compareTo(item.getMaSP()) == 0) {
                         o2.setTenSP(item.getTenSP());
                         return 1;
@@ -71,8 +69,8 @@ public class DSSanPham {
                     break;
                 }
             }
-            
-            default -> {
+
+            default: {
                 break;
             }
         }
