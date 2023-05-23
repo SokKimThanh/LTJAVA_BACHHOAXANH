@@ -23,15 +23,18 @@ public class frmAdminSanPham extends javax.swing.JFrame {
     String tenSP = "";
     int loaiSP = 0;
     double giaSP = .0;
+    int tieuChiTimKiem = 0;
 
     private void hienThi() {
         danhSachSP.DocDL();
+        DefaultTableModel tableModel = (DefaultTableModel) tblHienThi.getModel();
+        tableModel.setRowCount(0);
         for (SanPham value : danhSachSP.getData()) {
-            DefaultTableModel detbl = (DefaultTableModel) tblHienThi.getModel();
             Object[] data = new Object[]{value.getMaSP(), value.getTenSP(), value.getLoaiSP(), value.getGiaSP()};
 //            detbl = (DefaultTableModel) tblHienThi.getModel();
-            detbl.addRow(data);
+            tableModel.addRow(data);
         }
+        tableModel.fireTableDataChanged();
     }
 
     /**
@@ -70,9 +73,10 @@ public class frmAdminSanPham extends javax.swing.JFrame {
         btnSua = new javax.swing.JButton();
         divSearch = new javax.swing.JPanel();
         panelSearch = new javax.swing.JPanel();
-        inputSearch1 = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
         ckbSearch1 = new javax.swing.JCheckBox();
-        btnSearch1 = new javax.swing.JButton();
+        cboTieuChi = new javax.swing.JComboBox<>();
+        btnSearch = new javax.swing.JButton();
         divTable = new javax.swing.JPanel();
         scrollSanPham = new javax.swing.JScrollPane();
         tblHienThi = new javax.swing.JTable();
@@ -187,7 +191,7 @@ public class frmAdminSanPham extends javax.swing.JFrame {
         divSearch.setLayout(new javax.swing.BoxLayout(divSearch, javax.swing.BoxLayout.PAGE_AXIS));
 
         panelSearch.setLayout(new javax.swing.BoxLayout(panelSearch, javax.swing.BoxLayout.LINE_AXIS));
-        panelSearch.add(inputSearch1);
+        panelSearch.add(txtSearch);
 
         ckbSearch1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,13 +200,16 @@ public class frmAdminSanPham extends javax.swing.JFrame {
         });
         panelSearch.add(ckbSearch1);
 
-        btnSearch1.setText("Tìm");
-        btnSearch1.addActionListener(new java.awt.event.ActionListener() {
+        cboTieuChi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--TieuChi--", "LoaiSanPham", "TenSanPham", "GiaSanPham" }));
+        panelSearch.add(cboTieuChi);
+
+        btnSearch.setText("Tìm");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearch1ActionPerformed(evt);
+                btnSearchActionPerformed(evt);
             }
         });
-        panelSearch.add(btnSearch1);
+        panelSearch.add(btnSearch);
 
         divSearch.add(panelSearch);
 
@@ -223,12 +230,14 @@ public class frmAdminSanPham extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        tblHienThi.setColumnSelectionAllowed(true);
         tblHienThi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblHienThiMouseClicked(evt);
             }
         });
         scrollSanPham.setViewportView(tblHienThi);
+        tblHienThi.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         divTable.add(scrollSanPham);
 
@@ -239,10 +248,61 @@ public class frmAdminSanPham extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch1ActionPerformed
-        // TODO add your handling code here:
-        danhSachSP.DocDL();
-    }//GEN-LAST:event_btnSearch1ActionPerformed
+    /**
+     * Đây là một đoạn code trong Java để xử lý sự kiện khi người dùng nhấn vào
+     * nút tìm kiếm btnSearch.
+     *
+     * Khi người dùng nhấn vào nút này, phương thức btnSearch1ActionPerformed sẽ
+     * được gọi.
+     *
+     * Trong phương thức này, đầu tiên chúng ta khai báo biến tieuChiTimKiem và
+     * gán giá trị cho nó bằng cách lấy giá trị được chọn từ cboTieuChi.
+     *
+     * Đây là một đối tượng JComboBox cho phép người dùng chọn một tiêu chí tìm
+     * kiếm.
+     *
+     * Sau đó, chúng ta kiểm tra xem người dùng có chọn một tiêu chí tìm kiếm
+     * hay không bằng cách so sánh tieuChiTimKiem với 0.
+     *
+     * Nếu người dùng đã chọn một tiêu chí, chúng ta sẽ gọi phương thức timKiem
+     * của đối tượng danhSachSP để tìm kiếm sản phẩm theo tiêu chí được chọn.
+     *
+     * Tiếp theo, chúng ta lấy đối tượng DefaultTableModel từ tblHienThi và gọi
+     * phương thức setRowCount(0) để xóa tất cả các dòng hiện có trong bảng.
+     *
+     * Sau đó, chúng ta gọi phương thức fireTableDataChanged() để thông báo cho
+     * JTable về sự thay đổi dữ liệu.
+     *
+     * Cuối cùng, chúng ta sử dụng vòng lặp for để duyệt qua danh sách sản phẩm
+     * được trả về từ phương thức timKiem và thêm từng sản phẩm vào bảng.
+     *
+     * Chúng ta sử dụng phương thức addRow() của lớp DefaultTableModel để thêm
+     * một hàng mới vào bảng với các giá trị tương ứng.
+     *
+     * Sau khi hoàn thành vòng lặp, chúng ta gọi lại phương thức
+     * fireTableDataChanged() để cập nhật lại giao diện của JTable.
+     */
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // khai bao
+        tieuChiTimKiem = cboTieuChi.getSelectedIndex();
+// chon 1 tieu chi de tim
+        if (tieuChiTimKiem != 0) {
+            danhSachSP.timKiem(tieuChiTimKiem, txtSearch.getText(), cboLoaiSanPham.getSelectedIndex());
+            DefaultTableModel tableModel = (DefaultTableModel) tblHienThi.getModel();
+            tableModel.setRowCount(0);
+            tableModel.fireTableDataChanged();
+
+            for (SanPham value : danhSachSP.getData()) {
+                DefaultTableModel detbl = (DefaultTableModel) tblHienThi.getModel();
+                Object[] data = new Object[]{value.getMaSP(), value.getTenSP(), value.getLoaiSP(), value.getGiaSP()};
+                detbl = (DefaultTableModel) tblHienThi.getModel();
+                detbl.addRow(data);
+            }
+            tableModel.fireTableDataChanged();
+        } else {
+            hienThi();
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     private void ckbSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbSearch1ActionPerformed
         // TODO add your handling code here:
@@ -377,11 +437,12 @@ public class frmAdminSanPham extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSearch1;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox<String> cboLoaiSanPham;
+    private javax.swing.JComboBox<String> cboTieuChi;
     private javax.swing.JCheckBox ckbSearch1;
     private javax.swing.JPanel divButton;
     private javax.swing.JPanel divGiaTien;
@@ -392,7 +453,6 @@ public class frmAdminSanPham extends javax.swing.JFrame {
     private javax.swing.JPanel divTable;
     private javax.swing.JPanel divTenSP;
     private javax.swing.JPanel divTitle;
-    private javax.swing.JTextField inputSearch1;
     private javax.swing.JLabel lblGiaTien;
     private javax.swing.JLabel lblLoaiSanPham;
     private javax.swing.JLabel lblTenSP;
@@ -401,6 +461,7 @@ public class frmAdminSanPham extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrollSanPham;
     private javax.swing.JTable tblHienThi;
     private javax.swing.JTextField txtGiaSanPham;
+    private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtTenSanPham;
     // End of variables declaration//GEN-END:variables
 }

@@ -151,4 +151,49 @@ public class DSSanPham {
             Logger.getLogger(DSSanPham.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public void timKiem(int tieuChiTimKiem, String keySearch, int cboLoaiSP) {
+        data.clear();
+        if (keySearch == null || "".equals(keySearch)) {
+            System.out.println("Chua nhap tu khoa tim kiem");
+            return;
+        }
+        // khai bao
+        String sql;
+
+        switch (tieuChiTimKiem) {
+            case 1 -> {
+                sql = "SELECT * from " + tenTable + " WHERE " + tenTable + ".loaiSP=" + cboLoaiSP;
+
+            }
+            case 2 -> {
+
+                sql = "SELECT * from " + tenTable + " WHERE " + tenTable + ".tenSP LIKE N'" + keySearch + "%'";
+
+            }
+            case 3 -> {
+
+                sql = "select * from " + tenTable + " WHERE " + tenTable + ".giaSP < " + Double.valueOf(keySearch);
+            }
+            default ->
+                sql = "select * from " + tenTable;
+        }
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            
+            ResultSet result = stmt.executeQuery();
+            while (result.next()) {
+                SanPham value = new SanPham();
+                value.setMaSP(result.getInt("maSP"));
+                value.setTenSP(result.getString("tenSP"));
+                value.setLoaiSP(result.getInt("loaiSP"));
+                value.setGiaSP(result.getDouble("giaSP"));
+                data.add(value);
+            }
+            System.out.println("Doc du lieu xong!");
+        } catch (SQLException ex) {
+            Logger.getLogger(DSSanPham.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
