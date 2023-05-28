@@ -1,4 +1,7 @@
-package frmTimKiem;
+package leduyanhtu;
+
+
+import model.DSSanPham;
 
 /**
  * name: Lê Duy Anh Tú
@@ -162,6 +165,11 @@ public class frmTimKiem extends javax.swing.JFrame {
 
         btnThemGioHang.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         btnThemGioHang.setText("Thêm vào giỏ  hàng");
+        btnThemGioHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemGioHangActionPerformed(evt);
+            }
+        });
 
         btnTimKiem.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         btnTimKiem.setText("Tìm");
@@ -270,6 +278,10 @@ public class frmTimKiem extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_btnTimKiemActionPerformed
+
+    private void btnThemGioHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemGioHangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThemGioHangActionPerformed
 
     /**
      * @param args the command line arguments
