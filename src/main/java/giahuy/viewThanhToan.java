@@ -81,7 +81,7 @@ public class viewThanhToan extends javax.swing.JFrame {
         labelTongTien.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelTongTien.setText("36.000");
 
-        btnHoanTatThanhToan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnHoanTatThanhToan.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnHoanTatThanhToan.setText("Hoàn tất thanh toán");
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N

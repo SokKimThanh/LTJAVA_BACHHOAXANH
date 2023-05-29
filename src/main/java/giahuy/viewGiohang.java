@@ -57,6 +57,7 @@ public class viewGiohang extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblTTLSP.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        lblTTLSP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTTLSP.setText("Giỏ Hàng");
 
         btnEdit.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -70,6 +71,7 @@ public class viewGiohang extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Tên sản phẩm");
 
+        sliderSoLuong.setValue(0);
         sliderSoLuong.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderSoLuongStateChanged(evt);
@@ -111,6 +113,7 @@ public class viewGiohang extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton2.setText("Xóa");
 
+        btnThanhToan.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnThanhToan.setText("Thanh toán");
         btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +121,7 @@ public class viewGiohang extends javax.swing.JFrame {
             }
         });
 
+        btnXoaGioHang.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnXoaGioHang.setText("Xóa giỏ hàng");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -144,10 +148,9 @@ public class viewGiohang extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(labelSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(sliderSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addComponent(sliderSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelTongTien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(6, 6, 6))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2)
