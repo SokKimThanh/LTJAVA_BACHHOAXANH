@@ -84,7 +84,7 @@ public class viewThanhToan extends javax.swing.JFrame {
         btnHoanTatThanhToan.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnHoanTatThanhToan.setText("Hoàn tất thanh toán");
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Thanh toán");
 
