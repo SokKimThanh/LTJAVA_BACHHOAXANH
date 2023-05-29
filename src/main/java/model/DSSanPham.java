@@ -4,6 +4,12 @@
  */
 package model;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -195,6 +201,34 @@ public class DSSanPham {
             System.out.println("Doc du lieu xong!");
         } catch (SQLException ex) {
             Logger.getLogger(DSSanPham.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     public void GhiFile(String file) {
+
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(data);
+            System.out.println("Ghi Thanh cong");
+        } catch (FileNotFoundException ex) {
+            System.out.println("Khong tim thay file");
+        } catch (IOException ex) {
+            System.out.println("Khong tim thay file");
+        }
+    }
+
+    public void DocFile(String file) {
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream oos = new ObjectInputStream(fis);
+            data = (ArrayList<SanPham>) oos.readObject();
+            System.out.println("Ghi Thanh cong");
+        } catch (FileNotFoundException ex) {
+            System.out.println("FileNotFoundException: Khong tim thay file");
+        } catch (IOException ex) {
+            System.out.println("IOException: Khong doc duoc file");
+        } catch (ClassNotFoundException ex) {
+            System.out.println("ClassNotFoundException: Chua tao doi tuong sinh vien");
         }
     }
 }
