@@ -144,55 +144,11 @@ public class DanhSachAccount {
             // di chuyển con trỏ của resultSet đến hàng mong muốn bằng các phương thức như next()
             while (result.next()) {
                 Account value = new Account();
-                User user = new User();
-                value.setUserName(result.getString("username"));
+                User user = new User(/**/result.getString("user"));
+                value.setUser(user);
                 value.setPassword(result.getString("password"));
                 data.add(value);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(DanhSachAccount.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public void TimKiem(int tieuChiTimKiem, String keySearch, int cboLoaiSP) {
-        data.clear();
-        if (keySearch == null || "".equals(keySearch)) {
-            System.out.println("Chua nhap tu khoa tim kiem");
-            return;
-        }
-        // khai bao
-        String sql;
-
-        switch (tieuChiTimKiem) {
-            case 1 -> {
-                sql = "SELECT * from " + tenTable + " WHERE " + tenTable + ".hoUser LIKE N'" + keySearch + "%'";
-            }
-            case 2 -> {
-
-                sql = "SELECT * from " + tenTable + " WHERE " + tenTable + ".tenUser LIKE N'" + keySearch + "%'";
-
-            }
-            case 3 -> {
-
-                sql = "SELECT * from " + tenTable + " WHERE " + tenTable + ".gioiTinh LIKE N'" + keySearch + "%'";
-            }
-            default ->
-                sql = "SELECT * from " + tenTable + " WHERE " + tenTable + ".email LIKE N'" + keySearch + "%'";
-        }
-
-        try {
-            PreparedStatement stmt = conn.prepareStatement(sql);
-
-            ResultSet result = stmt.executeQuery();
-            while (result.next()) {
-                User value = new User();
-                value.setHoUser(result.getString("hoUser"));
-                value.setTenUser(result.getString("tenUser"));
-                value.setGioiTinh(result.getString("gioiTinh"));
-                value.setEmail(result.getString("email"));
-                data.add(value);
-            }
-            System.out.println("Doc du lieu xong!");
         } catch (SQLException ex) {
             Logger.getLogger(DanhSachAccount.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -3,23 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
- 
+
 /**
  *
  * @author Admin
  */
-public class GioHang {
-    private DSSanPham data;
+public class GioHangItem {
 
-    public DSSanPham getData() {
-        return data;
-    }
-
-    public void setData(DSSanPham data) {
-        this.data = data;
-    }
     private int soLuong;
-    private SanPham item;
+    private SanPham sanpham;
 
     public int getSoLuong() {
         return soLuong;
@@ -30,16 +22,16 @@ public class GioHang {
     }
 
     public SanPham getItem() {
-        return item;
+        return sanpham;
     }
 
     public void setItem(SanPham item) {
-        this.item = item;
+        this.sanpham = item;
     }
 
-    public GioHang(SanPham item, int soLuong) {
+    public GioHangItem(SanPham sanpham, int soLuong) {
         this.soLuong = soLuong;
-        this.item = item;
+        this.sanpham = sanpham;
     }
-    
+
 }
