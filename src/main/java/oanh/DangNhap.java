@@ -126,9 +126,11 @@ public class DangNhap extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4);
 
+        btnQuenMK.setBackground(new java.awt.Color(51, 255, 255));
         btnQuenMK.setText("Quên Mật Khẩu");
         jPanel3.add(btnQuenMK);
 
+        btnDangKy.setBackground(new java.awt.Color(51, 255, 255));
         btnDangKy.setText("Đăng Ký");
         jPanel3.add(btnDangKy);
 

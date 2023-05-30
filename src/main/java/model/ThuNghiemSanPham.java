@@ -8,7 +8,7 @@ package model;
  *
  * @author Thanh date 17/05/2023 Thu nghiem danh sach sản phẩm
  */
-public class mainSanpham {
+public class ThuNghiemSanPham {
 
     public static void main(String[] args) {
 //        DSSanPham list = new DSSanPham();
