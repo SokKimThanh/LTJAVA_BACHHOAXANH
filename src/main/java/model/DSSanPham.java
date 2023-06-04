@@ -203,7 +203,8 @@ public class DSSanPham {
             Logger.getLogger(DSSanPham.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     public void GhiFile(String file) {
+
+    public void GhiFile(String file) {
 
         try {
             FileOutputStream fos = new FileOutputStream(file);
