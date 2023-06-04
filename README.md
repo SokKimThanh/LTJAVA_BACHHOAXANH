@@ -1,7 +1,8 @@
 # BÁCH HÓA XANH - JAVA application
 Nhóm 4 thành viên gồm: Kiều Oanh, Anh Tú, Huy, Thanh Sok thực hiện project java chủ đề bán hàng offline
 phần mềm sử dụng là: Net bean 8.2, Netbean 17. Java 18, Java9
-
+# cập nhật tiến độ 04/06/2023
+- cập nhật màn hình tổng hợp
 # Cập nhật tiến độ 29/05/2023
 - giao dien  thanh toan, gio hang 
 - cập nhật file báo cáo bách hóa xanh
