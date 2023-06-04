@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import model.DSSanPham;
 import model.SanPham;
+import sokkimthanh.frmAdminSanPham;
 //import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
@@ -324,6 +325,12 @@ public class frmMainForm extends javax.swing.JFrame {
 
         tabMain.addTab("Giỏ Hàng", tabGioHang);
 
+        tabQuanLy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabQuanLyMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout tabQuanLy_SanPhamLayout = new javax.swing.GroupLayout(tabQuanLy_SanPham);
         tabQuanLy_SanPham.setLayout(tabQuanLy_SanPhamLayout);
         tabQuanLy_SanPhamLayout.setHorizontalGroup(
@@ -505,6 +512,11 @@ public class frmMainForm extends javax.swing.JFrame {
         txtMuaHang_SoLuong.setText(tblModel.getValueAt(tblMuaHang_DanhSach.getSelectedRow(), 4).toString());
         sldMuaHang_SoLuong.setValue(Integer.parseInt(txtMuaHang_SoLuong.getText()));
     }//GEN-LAST:event_tblMuaHang_DanhSachMouseClicked
+
+    private void tabQuanLyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabQuanLyMouseClicked
+        frmAdminSanPham s = new frmAdminSanPham();
+        s.setVisible(true);
+    }//GEN-LAST:event_tabQuanLyMouseClicked
 
     private void Hide() {
         //Set null texts

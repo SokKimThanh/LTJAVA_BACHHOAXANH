@@ -7,6 +7,9 @@
 -- Phiên bản máy phục vụ: 5.7.25
 -- Phiên bản PHP: 7.1.26
 
+create database bachhoaxanh
+use bachhoaxanh
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
