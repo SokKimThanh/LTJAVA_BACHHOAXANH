@@ -5,13 +5,11 @@
  */
 package leduyanhtu;
 
-<<<<<<< HEAD:src/leduyanhtu/frmMainForm.java
-import giahuy.viewGiohang;
+ import giahuy.viewGiohang;
 import java.awt.Color;
 import java.awt.Font;
-=======
->>>>>>> 05ce438e3748bd1846c2604ae220c218caa23c80:src/project/frmMainForm.java
-import java.awt.event.KeyEvent;
+ 
+ import java.awt.event.KeyEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -20,8 +18,6 @@ import model.DSSanPham;
 import model.SanPham;
 import oanh.DangNhap;
 import sokkimthanh.frmAdminSanPham;
-import sokkimthanh.panelAddSanpham;
-//import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
  *

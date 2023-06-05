@@ -2,16 +2,9 @@ package oanh;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.WindowEvent;
-import javax.swing.ButtonGroup;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-<<<<<<< HEAD
 import javax.swing.JRadioButton;
 import leduyanhtu.frmMainForm;
-=======
-import project.frmMainForm;
->>>>>>> 05ce438e3748bd1846c2604ae220c218caa23c80
 
 /**
  *
@@ -222,7 +215,6 @@ public class DangNhap extends javax.swing.JFrame {
         if (txtUsername.getText().equals("") || txtPass.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Username or Pass is empty!", "Empty", JOptionPane.WARNING_MESSAGE);
         }
-<<<<<<< HEAD
         // thêm sự kiện người dùng chọn vào radiobutton 
         if (this.kiemtraLoaiTaiKhoan == true) // taikhoan admin
         {
@@ -251,16 +243,6 @@ public class DangNhap extends javax.swing.JFrame {
             }
         }
 
-=======
-        if (txtUsername.getText().equals("admin") || txtPass.getText().equals("admin")) {
-            JOptionPane.showMessageDialog(null, "Login success!");
-            new frmMainForm().setVisible(true);
-            new DangNhap().setVisible(false);
-        } else {
-            JOptionPane.showConfirmDialog(null,"Login failed!","Failed",JOptionPane.ERROR_MESSAGE);
-        }
-        
->>>>>>> 05ce438e3748bd1846c2604ae220c218caa23c80
     }//GEN-LAST:event_btnDangNhap1ActionPerformed
 
     private void btnHuy1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuy1ActionPerformed
