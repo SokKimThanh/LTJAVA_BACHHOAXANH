@@ -5,15 +5,11 @@
  */
 package project;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.KeyEvent;
-import java.sql.ResultSet;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 import model.DSSanPham;
 import model.SanPham;
 import sokkimthanh.frmAdminSanPham;
@@ -32,6 +28,7 @@ public class frmMainForm extends javax.swing.JFrame {
     private int timKiem;
 
     public frmMainForm() {
+       
         initComponents();
     }
 

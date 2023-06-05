@@ -1,6 +1,7 @@
 package oanh;
 
 import javax.swing.JOptionPane;
+import project.frmMainForm;
 
 /**
  *
@@ -175,9 +176,12 @@ public class DangNhap extends javax.swing.JFrame {
         }
         if (txtUsername.getText().equals("admin") || txtPass.getText().equals("admin")) {
             JOptionPane.showMessageDialog(null, "Login success!");
+            new frmMainForm().setVisible(true);
+            new DangNhap().setVisible(false);
         } else {
             JOptionPane.showConfirmDialog(null,"Login failed!","Failed",JOptionPane.ERROR_MESSAGE);
         }
+        
     }//GEN-LAST:event_btnDangNhap1ActionPerformed
 
     private void btnHuy1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuy1ActionPerformed
