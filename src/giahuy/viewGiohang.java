@@ -54,7 +54,7 @@ public class viewGiohang extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblTTLSP.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         lblTTLSP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="radioBtnGroupLoaiTaiKhoan">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.ButtonGroup()"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ItemListener itemListener = new ItemListener() {&#xa;            @Override&#xa;        public void itemStateChanged(ItemEvent e) {&#xa;                JRadioButton radioButton = (JRadioButton) e.getItem();&#xa;                System.out.println(radioButton.getText() + &quot; was &quot; + (e.getStateChange() == ItemEvent.SELECTED ? &quot;selected&quot; : &quot;deselected&quot;));&#xa;            }&#xa;        };&#xa;        rbtQuantrivien.addItemListener(itemListener);&#xa;        rbtKhachhang.addItemListener(itemListener);&#xa;&#xa;        // th&#xea;m group radio button&#xa;        radioBtnGroupLoaiTaiKhoan.add(rbtQuantrivien);&#xa;        radioBtnGroupLoaiTaiKhoan.add(rbtKhachhang);"/>
+      </AuxValues>
+    </Component>
+  </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
       <Color id="Default Cursor"/>
     </Property>
     <Property name="location" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
-      <Point value="[600, 600]"/>
+      <Point value="[50, 50]"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[300, 108]"/>
@@ -16,7 +24,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -85,11 +93,23 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n Tr&#x1ecb; Vi&#xea;n"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtQuantrivienActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JRadioButton()"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rbtKhachhang">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Kh&#xe1;ch h&#xe0;ng"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtKhachhangActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="this.kiemtraLoaiTaiKhoan = false;&#xa;rbtKhachhang.setSelected(true);"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -141,6 +161,9 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
           <SubComponents>
             <Component class="javax.swing.JTextField" name="txtUsername">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUsernameActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

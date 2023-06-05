@@ -1,6 +1,13 @@
 package oanh;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.WindowEvent;
+import javax.swing.ButtonGroup;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import leduyanhtu.frmMainForm;
 
 /**
  *
@@ -8,10 +15,13 @@ import javax.swing.JOptionPane;
  */
 public class DangNhap extends javax.swing.JFrame {
 
+    private boolean kiemtraLoaiTaiKhoan;
+
     /**
      * Creates new form DangNhap
      */
     public DangNhap() {
+        kiemtraLoaiTaiKhoan = false;// tai khoan khach hang
         initComponents();
     }
 
@@ -24,6 +34,7 @@ public class DangNhap extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        radioBtnGroupLoaiTaiKhoan = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         panelTen = new javax.swing.JPanel();
         lblTen = new javax.swing.JLabel();
@@ -47,9 +58,23 @@ public class DangNhap extends javax.swing.JFrame {
         btnDangNhap1 = new javax.swing.JButton();
         btnHuy1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        ItemListener itemListener = new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                JRadioButton radioButton = (JRadioButton) e.getItem();
+                System.out.println(radioButton.getText() + " was " + (e.getStateChange() == ItemEvent.SELECTED ? "selected" : "deselected"));
+            }
+        };
+        rbtQuantrivien.addItemListener(itemListener);
+        rbtKhachhang.addItemListener(itemListener);
+
+        // thêm group radio button
+        radioBtnGroupLoaiTaiKhoan.add(rbtQuantrivien);
+        radioBtnGroupLoaiTaiKhoan.add(rbtKhachhang);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setLocation(new java.awt.Point(600, 600));
+        setLocation(new java.awt.Point(50, 50));
         setMinimumSize(new java.awt.Dimension(300, 108));
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridLayout(5, 0));
@@ -73,9 +98,21 @@ public class DangNhap extends javax.swing.JFrame {
         paneliputTen.setLayout(new javax.swing.BoxLayout(paneliputTen, javax.swing.BoxLayout.LINE_AXIS));
 
         rbtQuantrivien.setText("Quản Trị Viên");
+        rbtQuantrivien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtQuantrivienActionPerformed(evt);
+            }
+        });
         paneliputTen.add(rbtQuantrivien);
 
+        this.kiemtraLoaiTaiKhoan = false;
+        rbtKhachhang.setSelected(true);
         rbtKhachhang.setText("Khách hàng");
+        rbtKhachhang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtKhachhangActionPerformed(evt);
+            }
+        });
         paneliputTen.add(rbtKhachhang);
 
         jPanel1.add(paneliputTen);
@@ -99,6 +136,12 @@ public class DangNhap extends javax.swing.JFrame {
         jPanel2.add(panelTen2);
 
         paneliputTen2.setLayout(new javax.swing.BoxLayout(paneliputTen2, javax.swing.BoxLayout.LINE_AXIS));
+
+        txtUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsernameActionPerformed(evt);
+            }
+        });
         paneliputTen2.add(txtUsername);
 
         jPanel2.add(paneliputTen2);
@@ -166,18 +209,43 @@ public class DangNhap extends javax.swing.JFrame {
         getContentPane().add(jPanel5);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDangNhap1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhap1ActionPerformed
-        // TODO add your handling code here:
+
+        // rào nhập rỗng
         if (txtUsername.getText().equals("") || txtPass.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Username or Pass is empty!", "Empty", JOptionPane.WARNING_MESSAGE);
         }
-        if (txtUsername.getText().equals("admin") || txtPass.getText().equals("admin")) {
-            JOptionPane.showMessageDialog(null, "Login success!");
-        } else {
-            JOptionPane.showConfirmDialog(null,"Login failed!","Failed",JOptionPane.ERROR_MESSAGE);
+        // thêm sự kiện người dùng chọn vào radiobutton 
+        if (this.kiemtraLoaiTaiKhoan == true) // taikhoan admin
+        {
+            if (txtUsername.getText().equals("admin") && txtPass.getText().equals("admin")) {
+                JOptionPane.showMessageDialog(null, "Login success!");
+                // Mở frame chính lên để sử dụng
+                new frmMainForm(this.kiemtraLoaiTaiKhoan).setVisible(true);
+                // Đóng JFrame bằng cách gửi một sự kiện đóng cửa sổ
+                this.dispose();
+
+            } else {
+                JOptionPane.showConfirmDialog(null, "Login failed!", "Failed", JOptionPane.ERROR_MESSAGE);
+            }
+        } else // tai khoan user thường 
+        {
+            // user
+            if (txtUsername.getText().equals("user1") && txtPass.getText().equals("user1")) {
+                JOptionPane.showMessageDialog(null, "Login success!");
+                // Mở frame chính lên để sử dụng
+                new frmMainForm(this.kiemtraLoaiTaiKhoan).setVisible(true);
+
+                // Đóng JFrame bằng cách gửi một sự kiện đóng cửa sổ
+//                this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+            } else {
+                JOptionPane.showConfirmDialog(null, "Login failed!", "Failed", JOptionPane.ERROR_MESSAGE);
+            }
         }
+
     }//GEN-LAST:event_btnDangNhap1ActionPerformed
 
     private void btnHuy1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuy1ActionPerformed
@@ -188,14 +256,29 @@ public class DangNhap extends javax.swing.JFrame {
 
     private void btnDangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangKyActionPerformed
         // TODO add your handling code here:
-        frmDangKy fdangky = new frmDangKy();
-        fdangky.setVisible(true);
+        new frmDangKy().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnDangKyActionPerformed
 
     private void btnQuenMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuenMKActionPerformed
-        // TODO add your handling code here:
-        
+        new frmDoiMK().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnQuenMKActionPerformed
+
+    private void rbtQuantrivienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtQuantrivienActionPerformed
+        // xu ly code khi la quan tri vien
+        this.kiemtraLoaiTaiKhoan = true;
+        System.out.println("rbtQuantrivienActionPerformed: " + this.kiemtraLoaiTaiKhoan);
+    }//GEN-LAST:event_rbtQuantrivienActionPerformed
+
+    private void rbtKhachhangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtKhachhangActionPerformed
+        this.kiemtraLoaiTaiKhoan = false;
+        System.out.println("rbtKhachhangActionPerformed: " + this.kiemtraLoaiTaiKhoan);
+    }//GEN-LAST:event_rbtKhachhangActionPerformed
+
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsernameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,6 +334,7 @@ public class DangNhap extends javax.swing.JFrame {
     private javax.swing.JPanel paneliputTen;
     private javax.swing.JPanel paneliputTen1;
     private javax.swing.JPanel paneliputTen2;
+    private javax.swing.ButtonGroup radioBtnGroupLoaiTaiKhoan;
     private javax.swing.JRadioButton rbtKhachhang;
     private javax.swing.JRadioButton rbtQuantrivien;
     private javax.swing.JTextField txtPass;

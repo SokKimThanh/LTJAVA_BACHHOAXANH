@@ -10,14 +10,13 @@ import javax.swing.JOptionPane;
 import model.Account;
 import model.DanhSachAccount;
 import model.User;
- 
 
 /**
  *
  * @author ABC
  */
 public class frmDangKy extends javax.swing.JFrame {
-
+    
     DanhSachAccount danhsach = new DanhSachAccount();
 
     /**
@@ -56,7 +55,7 @@ public class frmDangKy extends javax.swing.JFrame {
         txtGioiTinh = new javax.swing.JLabel();
         cboGioiTinh = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
@@ -230,6 +229,7 @@ public class frmDangKy extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
@@ -263,17 +263,18 @@ public class frmDangKy extends javax.swing.JFrame {
             return;
         }
         JOptionPane.showMessageDialog(this, "Đăng ký thành công!");
-
+        
         Random count = new Random();
         int userID = count.nextInt(9999);
         String userId = String.format("%d", userID);
         User o = new User(userId, txtHo.getText(),
                 txtTen.getText(),
                 cboGioiTinh.getSelectedIndex() == 0 ? "Nam" : "Nu", txtEmail.getText());
-
+        
         Account account = new Account(o, password);
         danhsach.ThemDL(account);
-
+        this.dispose();
+        new DangNhap().setVisible(true);
     }//GEN-LAST:event_btnSignUpActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed

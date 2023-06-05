@@ -80,7 +80,7 @@ public class frmAdminSanPham extends javax.swing.JFrame {
         scrollSanPham = new javax.swing.JScrollPane();
         tblHienThi = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Admin");
         setMinimumSize(new java.awt.Dimension(500, 173));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.PAGE_AXIS));

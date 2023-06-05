@@ -68,7 +68,7 @@ public class DSSanPham {
     private void getConnection() {
         String url = "jdbc:mysql://localhost:3306/" + tenDatabase;
         String user = "root";
-        String password = "vertrigo";
+        String password = "";
         try {
             conn = DriverManager.getConnection(url, user, password);
             System.out.println("Ket noi thanh cong");
